@@ -2,7 +2,7 @@
 // Fails when a data entry has no source URL, no checked date, a date older than 18 months, or a source that does not answer.
 //   node scripts/check-data.mjs             all checks, including a request to every URL
 //   node scripts/check-data.mjs --offline   everything except the requests
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -40,6 +40,16 @@ export function loadEntries() {
   return FILES.flatMap(([file, key]) => JSON.parse(readFileSync(join(root, "data", file), "utf8"))[key].map((e) => ({ file, ...e })));
 }
 
+/** Source URLs listed under "## Sources" in each skill. */
+export function skillUrls() {
+  const dir = join(root, "plugins/kit/skills");
+  return readdirSync(dir).flatMap((name) => {
+    const md = readFileSync(join(dir, name, "SKILL.md"), "utf8");
+    const sources = md.split("## Sources")[1] ?? "";
+    return [...sources.matchAll(/https:\/\/[^\s)>\]`]+/g)].map((m) => m[0].replace(/[.,;]+$/, ""));
+  });
+}
+
 async function reachable(url) {
   let last = "";
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -64,7 +74,7 @@ async function main() {
     for (const p of problemsOf(e)) { console.error(`${e.file} ${e.id}: ${p}`); failures++; }
   }
   if (!offline) {
-    const urls = [...new Set(entries.flatMap((e) => [e.source, ...(e.related ?? [])]).map((s) => s?.url).filter(Boolean))];
+    const urls = [...new Set([...entries.flatMap((e) => [e.source, ...(e.related ?? [])]).map((s) => s?.url).filter(Boolean), ...skillUrls()])];
     const results = await Promise.all(urls.map(async (u) => [u, await reachable(u)]));
     for (const [u, err] of results) if (err) { console.error(`unreachable (${err}): ${u}`); failures++; }
     console.log(`checked ${urls.length} URLs`);

@@ -1,0 +1,28 @@
+# Tests, data check and plugin validation on every push and pull request. Written locally; not enabled until the repository exists.
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Source pages move: check every Monday that each URL still answers and no entry is older than 18 months.
+    - cron: "17 6 * * 1"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with: { version: 10 }
+      - uses: actions/setup-node@v5
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: node scripts/sync-name.mjs --check
+      - run: pnpm check-data
+      - run: |
+          npm install -g @anthropic-ai/claude-code@2.1.286
+          claude plugin validate plugins/kit --strict
+          claude plugin validate . --strict
