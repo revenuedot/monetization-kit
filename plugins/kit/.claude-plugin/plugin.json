@@ -1,0 +1,25 @@
+{
+  "name": "monetization-kit",
+  "displayName": "Monetization Kit",
+  "version": "0.1.0",
+  "description": "Skills and a read-only knowledge server that let a coding agent plan, price, build and test an app's subscriptions and paywall. Maintained by RevenueDot.",
+  "author": {
+    "name": "RevenueDot",
+    "email": "support@revenuedot.app",
+    "url": "https://revenuedot.app"
+  },
+  "homepage": "https://github.com/revenuedot/monetization-kit",
+  "repository": "https://github.com/revenuedot/monetization-kit",
+  "license": "MIT",
+  "keywords": [
+    "subscriptions",
+    "in-app-purchases",
+    "paywall",
+    "pricing",
+    "app-store",
+    "google-play",
+    "sandbox-testing",
+    "mcp",
+    "agent-skills"
+  ]
+}

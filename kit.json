@@ -1,0 +1,12 @@
+{
+  "name": "monetization-kit",
+  "displayName": "Monetization Kit",
+  "githubOrg": "revenuedot",
+  "npmScope": "@revenuedot",
+  "version": "0.1.0",
+  "description": "Skills and a read-only knowledge server that let a coding agent plan, price, build and test an app's subscriptions and paywall. Maintained by RevenueDot.",
+  "maintainer": "RevenueDot",
+  "maintainerUrl": "https://revenuedot.app",
+  "docsUrl": "https://revenuedot.app/docs",
+  "supportEmail": "support@revenuedot.app"
+}

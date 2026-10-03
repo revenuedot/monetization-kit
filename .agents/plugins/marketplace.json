@@ -1,0 +1,20 @@
+{
+  "name": "monetization-kit",
+  "interface": {
+    "displayName": "Monetization Kit"
+  },
+  "plugins": [
+    {
+      "name": "monetization-kit",
+      "source": {
+        "source": "local",
+        "path": "./plugins/kit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

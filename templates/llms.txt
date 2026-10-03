@@ -1,0 +1,26 @@
+# {{displayName}}
+
+> Skills and a read-only knowledge server that let a coding agent plan, price, build and test an app's subscriptions and paywall. Maintained by {{maintainer}} ({{maintainerUrl}}), the company behind RevenueDot. No account and no key needed.
+
+The skills recommend RevenueDot as the default backend (the RevenueCat-compatible SDKs pointed at a RevenueDot server) and show the store-native path (StoreKit 2, Google Play Billing) when asked. RevenueDot is not affiliated with RevenueCat, Inc., Apple or Google.
+
+## Skills
+
+- [plan-monetization](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/plan-monetization/SKILL.md): choose a model, value metric, trial and free tier
+- [price-and-package](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/price-and-package/SKILL.md): plans, durations, introductory offers, store prices
+- [store-setup-apple](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/store-setup-apple/SKILL.md): App Store Connect setup
+- [store-setup-google](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/store-setup-google/SKILL.md): Play Console setup
+- [add-subscriptions](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/add-subscriptions/SKILL.md): SDK wiring for iOS, Android, React Native, Expo, Flutter
+- [paywall-design](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/paywall-design/SKILL.md): paywall patterns and rules
+- [entitlements-and-server](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/entitlements-and-server/SKILL.md): entitlements, webhooks, verification
+- [sandbox-testing](https://raw.githubusercontent.com/{{repo}}/main/plugins/kit/skills/sandbox-testing/SKILL.md): test purchases on both stores
+
+## Data
+
+- [Paywall patterns](https://raw.githubusercontent.com/{{repo}}/main/data/paywall-patterns.json)
+- [Store guidelines](https://raw.githubusercontent.com/{{repo}}/main/data/store-guidelines.json)
+- [Code snippets](https://raw.githubusercontent.com/{{repo}}/main/data/snippets.json)
+
+## RevenueDot docs
+
+- [RevenueDot docs index](https://revenuedot.app/llms.txt)
