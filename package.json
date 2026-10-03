@@ -15,6 +15,7 @@
   },
   "files": [
     "dist",
+    "kit.json",
     "data",
     "plugins",
     "README.md",
